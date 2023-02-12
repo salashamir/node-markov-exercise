@@ -1,6 +1,6 @@
 /** Command-line tool to generate Markov text. */
 const {MarkovMachine} = require("./markov");
-const axios = requrie('axios');
+const axios = require('axios');
 const fs = require('fs');
 
 const generateText = (text) => {
@@ -20,8 +20,9 @@ const generateTextFromFile = async (path) => {
 
 const generateTextFromUrl = async (url) => {
     try{
-        const data = await axios.get(url);
-        generateText(data);
+        const res = await axios.get(url);
+        console.log("RES: ", res)
+        generateText(res.data);
     } catch (e) {
         console.error(e);
         process.exit(1);
